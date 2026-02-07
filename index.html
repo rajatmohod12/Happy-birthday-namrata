@@ -1,0 +1,335 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Namrata 💖</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#3a1c1c;
+}
+
+/* ---------- HEART FLOAT ---------- */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp 6s linear infinite;
+  opacity:0.7;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0); opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-120vh); opacity:0}
+}
+
+/* ---------- LANDING ---------- */
+.landing{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  position:relative;
+}
+
+.border-box{
+  border:3px dashed rgba(255,255,255,0.8);
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  max-width:520px;
+}
+
+.landing h1{
+  font-size:2.5rem;
+  margin-bottom:10px;
+}
+.landing h1 span{
+  color:#fff;
+  text-shadow:0 0 10px #ff4d6d;
+}
+.landing p{
+  font-size:1.05rem;
+  margin:10px 0 20px;
+}
+
+.open-btn{
+  padding:14px 30px;
+  font-size:1rem;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff4d6d,#ff758f);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(255,77,109,0.5);
+  transition:0.3s;
+}
+.open-btn:hover{
+  transform:scale(1.08);
+}
+
+/* ---------- POPUP BOOK ---------- */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+  padding:15px;
+}
+
+.book{
+  background:#fff6ee;
+  width:100%;
+  max-width:380px;
+  min-height:480px;
+  border-radius:18px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.3);
+  position:relative;
+  overflow:hidden;
+  border:6px solid #ffb3c6;
+}
+
+.page{
+  padding:22px;
+  display:none;
+  height:100%;
+  animation:fade 0.4s ease;
+}
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:scale(0.95)}
+  to{opacity:1; transform:scale(1)}
+}
+
+.page h2{
+  text-align:center;
+  margin-bottom:12px;
+  color:#ff4d6d;
+}
+.page p{
+  font-size:0.95rem;
+  line-height:1.6;
+  margin-bottom:12px;
+}
+
+/* diary border */
+.page{
+  background:
+    linear-gradient(#fff6ee,#fff6ee),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 22px,
+      rgba(255,77,109,0.08) 23px
+    );
+  background-blend-mode: multiply;
+  border-radius:12px;
+}
+
+/* ---------- NAV BUTTONS ---------- */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+}
+.nav button{
+  padding:8px 18px;
+  border:none;
+  border-radius:20px;
+  background:#ff758f;
+  color:white;
+  cursor:pointer;
+  font-size:0.9rem;
+}
+
+/* ---------- FINAL BUTTONS ---------- */
+.final-btns{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:15px;
+}
+.final-btns button{
+  padding:10px 18px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+  color:white;
+  cursor:pointer;
+  font-size:0.85rem;
+}
+
+/* ---------- IMAGE GRID ---------- */
+.photos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.photos img{
+  width:100%;
+  border-radius:12px;
+  object-fit:cover;
+  border:2px solid #ffd6e0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:420px){
+  .landing h1{font-size:2rem}
+  .book{min-height:460px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<!-- LANDING -->
+<section class="landing">
+  <div class="border-box">
+    <h1>Happy Birthday <span>Namrata 💕</span></h1>
+    <p>8 February • Turning 16 🎂<br>
+    Ek choti si surprise website… just for you ✨</p>
+    <button class="open-btn" onclick="openBook()">Tap for something special 💌</button>
+  </div>
+</section>
+
+<!-- POPUP BOOK -->
+<div class="popup" id="popup">
+  <div class="book">
+
+    <!-- PAGE 1 -->
+    <div class="page active">
+      <h2>Dear Namrata 💗</h2>
+      <p>
+        Aaj ka din thoda special hai… kyunki aaj woh insaan paida hui
+        jo bina try kiye logon ke din better bana deti hai.
+      </p>
+      <p>
+        Tumhari smile, tumhari baatein aur tumhari simplicity —
+        sab kuch apne aap me rare hai ✨
+      </p>
+      <div class="nav">
+        <span></span>
+        <button onclick="nextPage()">Next →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+      <h2>About You 🌸</h2>
+      <p>
+        Tum strong bhi ho aur soft bhi — ek aisa combo
+        jo har kisi ke paas nahi hota.
+      </p>
+      <p>
+        Tumhari presence se log safe feel karte hain,
+        aur shayad isi liye tum special ho ❤️
+      </p>
+      <div class="nav">
+        <button onclick="prevPage()">← Back</button>
+        <button onclick="nextPage()">Next →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div class="page">
+      <h2>Little Memories 📸</h2>
+      <div class="photos">
+        <!-- Replace these images later -->
+        <img src="/Screenshot_2026-02-04-01-54-40-974_com.whatsapp-edit.jpg" alt="">
+        <img src="/Screenshot_2026-02-04-01-54-49-885_com.whatsapp-edit.jpg" alt="">
+        <img src="/Screenshot_2026-02-04-01-55-00-657_com.whatsapp-edit.jpg" alt="">
+        <img src="/Screenshot_2026-02-04-01-55-10-789_com.whatsapp-edit.jpg" alt="">
+      </div>
+      <p style="margin-top:10px">
+        Har photo ek feeling hoti hai, aur har feeling ka naam — Namrata 💕
+      </p>
+      <div class="nav">
+        <button onclick="prevPage()">← Back</button>
+        <button onclick="nextPage()">Next →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="page">
+      <h2>Special Message 💌</h2>
+      <p>
+        16 saal ki ho rahi ho, aur aage ka safar aur bhi beautiful hone wala hai.
+        Kabhi khud pe doubt aaye, toh yaad rakhna —
+        tum enough ho. Always 🌷
+      </p>
+      <p>
+        Stay the same. Stay kind. Stay YOU.
+      </p>
+
+      <p style="text-align:right;margin-top:15px">
+        — From <b>Your CupCake 😋</b>
+      </p>
+
+      <div class="final-btns">
+        <button onclick="alert('Happy Birthday Namrata 💖')">One More Smile 😊</button>
+        <button onclick="closeBook()">Close Diary 📖</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let current=0;
+const pages=document.querySelectorAll(".page");
+
+function openBook(){
+  document.getElementById("popup").style.display="flex";
+}
+function closeBook(){
+  document.getElementById("popup").style.display="none";
+  current=0;
+  showPage();
+}
+function showPage(){
+  pages.forEach((p,i)=>p.classList.toggle("active",i===current));
+}
+function nextPage(){
+  if(current<pages.length-1){current++;showPage();}
+}
+function prevPage(){
+  if(current>0){current--;showPage();}
+}
+</script>
+
+</body>
+</html>
